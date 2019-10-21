@@ -1,0 +1,73 @@
+NOSQL第一次实验报告
+一、摘要以及概述
+本实验在于初步了解nosql的典型数据库redis
+REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。
+Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。
+它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Hash), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。
+二、实验目的
+安装nosql数据库，初步了解相关操作命令
+
+三、实验内容
+实验步骤：
+1、安装redis
+在macos系统下，进入终端使用homebrew，输入命令语句
+Brew install redis，等待安装成功。
+2、测试redis
+进入终端，输入redis-cli进入redis操作界面，输入ping，如下图：
+
+3、set命令
+语法：set key value [EX seconds] [PX milliseconds] [NX|XX]
+示例：
+
+4、mset命令
+语法：mset key value [key value ...]
+示例：
+
+5、msetnx命令
+语法：msetnx key value [key value ...]
+注：mset中key可以已经存在，而在msetnx中key不可以已经存在；
+6、get命令
+语法：get key
+示例：
+
+
+7、mget命令
+语法：mget key [key ...]
+示例：
+
+8、del命令
+语法：del key [key...]
+示例：
+
+注：返回值是删除键值对对数
+9、strlen命令
+语法：strlen key
+示例：
+
+10、append命令
+语法：append key value
+示例：
+
+11、getrange命令
+语法：getrange key start end
+示例：
+
+12、getset命令
+语法：getset key value
+示例：
+
+注：key值一定要存在，返回值为原来的value值
+13、setrange命令
+语法：setrange key offset value
+示例：
+
+注：注意超出补“0”情况可以用来在指定位置增加新的子字符串值。
+四、实验概述
+在此实验中，我是用了macos系统，通过homebrew进行安装redis数据库。
+在完成安装之后，通过redis-cli进入了redis的操作界面。接着我初步尝试了redis数据库的set、get、del等语句。其中，mset与mget都是批量设置数据，而append则有追加的功能。
+五、实验总结
+在此次实验中，出现了如下注意点：
+mset中key可以已经存在，而在msetnx中key不可以已经存在；
+del中返回值是删除键值对对数；
+getset中key值一定要存在，返回值为原来的value值；
+setrange中注意超出补“0”情况可以用来在指定位置增加新的子字符串值。
