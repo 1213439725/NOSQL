@@ -1,0 +1,20 @@
+一、实验目的：
+  通过eclipse连接redis并且实现简易的redis操作。
+二、实验内容：
+  1）新建一个maven项目；
+  2）在pom.xml中添加包依赖；
+  3）创建一个java类；
+  4）写出如下代码，并运行得出结果。
+    import redis.clients.jedis.Jedis;
+    public class test1 {
+      public static void main(String[] args) {
+		    Jedis jedis=new Jedis("localhost");
+		    System.err.print(jedis.get("mf"));
+      }
+    }
+三、实验概述：
+  本实验，通过eclipse连接redis。首先打开redis服务（通过redis-server命令），接着在eclipse中新建一个maven项目，并且在pom.xml文件中添加包依赖代码
+  保存文件，下载包依赖。再新建一个class类，通过jedis接口连接本地的数据库，实现简单的数据库操作。
+四、实验总结：
+  在此实验中要注意，新建maven之后一定要添加包依赖；
+  连接数据库之前本地的数据库一定要打开。
