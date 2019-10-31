@@ -1,0 +1,91 @@
+第三次NOSQL实验报告
+一、实验目的
+初步尝试实现仓库管理系统功能
+二、实验内容
+1）完成仓库管理员所需要进行的查、改、增、删操作，并使用switch进行调度	，使	得管理员可以进行功能选择；
+2）思考如何通过hash树存储结构化的数据，对简单的key-value对进行优化。
+三、实验概述
+本实验中，第一部分通过基本的java代码实现。在每个函数中，首先通过jedis连接上数据库。之后通过jedis对象调用数据库的增改删查功能。由java中的输入输出函数传入参数以及传出结果。同时，为了实现用户的功能选择，我们选择使用switch对不同的功能函数进行调度。
+四、实验内容
+package NOSQL_redis.NOSQL_test;
+
+import java.util.Scanner;
+
+import redis.clients.jedis.Jedis;
+
+public class warehouse {
+	
+	/***
+	 * 查询
+	 * @param key
+	 * @return value
+	 */
+	public static String select (String key){
+		Jedis jedis = new Jedis("localhost");
+		String value = jedis.get(key);
+		jedis.close();
+		return value;
+	}
+	/***
+	 * 添加/修改
+	 * @param key
+	 * @param value
+	 */
+	public static void set (String key,String value) {
+		Jedis jedis = new Jedis("localhost");
+		jedis.set(key, value);
+		jedis.close();
+	}
+	/***
+	 * 删除
+	 * @param key
+	 */
+	public static void del (String key) {
+		Jedis jedis = new Jedis("localhost");
+		jedis.del(key);
+		jedis.close();
+	}
+	public static void chose(int n) {
+		switch (n) {
+		case 1:{
+			System.out.println("请输入查询关键词");
+			Scanner sc1 = new Scanner(System.in);
+			String key1 =sc1.nextLine();
+			String value1 = select(key1);
+			System.out.println(value1);
+			break;}
+		case 2:{
+			System.out.println("请输入添加修改关键词(键值对之间用空格分开)");
+			Scanner sc2 = new Scanner(System.in);
+			String input =sc2.nextLine();
+			String[] li = input.split(" ");
+			String key2 = li[0];
+			String value2 = li[1];
+			set(key2, value2);
+			break;}
+		case 3:{
+			System.out.println("请输入删除数据的key值");
+			Scanner sc3 = new Scanner(System.in);
+			String key3 = sc3.nextLine();
+			del(key3);
+			break;}
+		default:{
+			System.out.println("nothing happend");
+			break;}
+		}
+	}
+	public static void main(String[] args) {
+		System.out.println("请选择功能："
+				+ "1、查询数据"
+				+ "2、添改数据"
+				+ "3、删除数据"
+				);
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		chose(n);
+		
+	}
+
+}
+五、实验总结
+此次实验，是对本次项目目标的初步实现。大部分功能，以及用于存储的数据结构还不够理想。只是大致完成了最简单的功能，后期将在本次实验基础上，进行更进一步的拓展。
