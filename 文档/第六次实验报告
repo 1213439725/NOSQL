@@ -1,0 +1,20 @@
+第六次NOSQL实验报告
+一、实验目的
+将完成的项目上传到github的个人主页上
+二、实验内容
+1.安装git，Mac默认已经安装了Git，可以通过命令git —version查询一下。
+2.创建SSH KEY（如果已经创建过，则不用再次创建。查看~/.ssh/id_rsa.pub是否存在）
+　　生成方式：命令行输入ssh-keygen -t rsa，一路回车即可生成id_rsa.pub。
+3.在GitHub上添加刚才生成的公钥
+　　登录->选择settings->选择SSH and GPG keys->点击New SSH key按钮，（title随便输入，key输入刚才id_rsa.pub文件中的内容，保存即可）
+4.测试是否配置成功
+　　命令行输入ssh -T git@github.com。注意：这里只能用git用户，如果用自己的用户名则会出现拒绝提示
+5.打开idea，选择VCS->Import into VersionControl->ShareProject on GitHub
+6.这里可以选择Token和Password，都能实现目标，选择Token则点击下方的Create API Token输入用户名密码确定即可，选择Password则直接输入用户名密码
+7.输入描述，点击Share
+8.以后再打开VCS菜单，就可以看到里面有个GIt菜单，这样就可以实现项目的提交拉取了。
+
+三、实验概述
+将已经完成的项目上传到github上
+四、实验结果
+详细见https://github.com/1213439725/java_1
